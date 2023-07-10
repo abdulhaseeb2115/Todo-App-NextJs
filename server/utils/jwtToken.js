@@ -11,7 +11,8 @@ const sendToken = async (user, statusCode, res) => {
 		httpOnly: true,
 		// secure: "isSecure",
 	};
-	console.log("-> Token sent to - " + user.name);
+
+	console.log("\n\n-> Token sent to - " + user.name);
 	res.status(statusCode).cookie("token", token, options).json({
 		success: true,
 		user,

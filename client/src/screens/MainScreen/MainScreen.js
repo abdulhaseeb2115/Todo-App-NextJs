@@ -79,11 +79,17 @@ export default function MainScreen() {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				setIsLoading(true);
+				const token = localStorage.getItem("jwtToken");
+				if (!token) {
+					console.log("mainsc.js-> jwt token error");
+					return;
+				}
+				console.log(token);
 
+				setIsLoading(true);
 				const { data } = await api.getCompleteList(); // data request
 
-				if (data?.success === true) {
+				if (data && data?.success === true) {
 					setItemsList(data?.items); // set full list
 					setListType(0); // set list initially
 					handleItemFilter(0, data?.items); // set filtered list

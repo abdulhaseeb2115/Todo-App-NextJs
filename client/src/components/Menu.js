@@ -46,9 +46,9 @@ export default function Menu({ setToggleDropdown, setToggleMenu, toggleMenu }) {
 				<button
 					className="w-full h-[60px] bg-[#A59C82] bg-opacity-[98%] rounded-b-lg text-left text-white px-5 disabled:text-opacity-50 shadow-lg"
 					onClick={async () => {
-						localStorage.removeItem("jwtToken");
 						await api.Logout();
 						dispatch(logOut());
+						localStorage.removeItem("jwtToken");
 					}}
 				>
 					Logout

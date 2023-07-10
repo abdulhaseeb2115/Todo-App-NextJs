@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn, logOut, selectUser } from "./features/userSlice";
 import * as api from "./api/userRequests";
+import axios from "axios";
 
 function App() {
 	const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
 				const { data } = await api.LoadUser();
 				// console.log(data);
 				if (data) {
+					axios.defaults.headers.common["Authorization"] = data.token;
 					dispatch(
 						logIn({
 							user: data.user,

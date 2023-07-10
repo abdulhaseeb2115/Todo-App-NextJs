@@ -5,6 +5,7 @@ import * as api from "../../api/userRequests";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../features/userSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function LoginSignupScreen() {
 	const dispatch = useDispatch();
@@ -44,8 +45,11 @@ export default function LoginSignupScreen() {
 				setShowLoader(false);
 
 				localStorage.setItem("jwtToken", data.token);
-				dispatch(logIn({ user: data.user }));
-				navigate("/");
+				setTimeout(() => {
+					axios.defaults.headers.common["Authorization"] = data.token;
+					dispatch(logIn({ user: data.user }));
+					navigate("/");
+				}, 1000);
 			}
 		} catch (error) {
 			setShowLoader(false);
@@ -75,8 +79,11 @@ export default function LoginSignupScreen() {
 				setShowLoader(false);
 
 				localStorage.setItem("jwtToken", data.token);
-				dispatch(logIn({ user: data.user }));
-				navigate("/");
+				setTimeout(() => {
+					axios.defaults.headers.common["Authorization"] = data.token;
+					dispatch(logIn({ user: data.user }));
+					navigate("/");
+				}, 1000);
 			}
 		} catch (error) {
 			setShowLoader(false);
