@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background-image: url("../../assets/bridge.jpg");
+    background-image: url("../../assets/bridge.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
 
 
 .Button {
-    box-shadow: inset 0px 2px 0px 0px rgba(255, 255, 255, 0.2), -1px 1px 6px 1px rgba(84, 74, 74, 0.5);
+    box-shadow: -1px 2px 6px 1px rgba(84, 74, 74, 0.3);
 }
 
 .List::-webkit-scrollbar, .Options::-webkit-scrollbar {

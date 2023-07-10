@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as api from "../api/todoRequests";
+import * as Icon from "../assets/icons/all";
 import { toast } from "react-hot-toast";
 
 export default function AddItem({ refreshData }) {
@@ -30,10 +31,7 @@ export default function AddItem({ refreshData }) {
 	}
 
 	return (
-		<div className="Button relative w-[370px] h-[100px] bg-[#A59C82] bg-opacity-90 mt-5 rounded-lg border border-[#A59C82] mx-auto">
-			{/* heading */}
-			<p className="text-white drop-shadow-md my-3 mx-7">Add new item</p>
-
+		<div className="relative w-[400px] bg-white mt-5 rounded-lg mx-auto overflow-hidden">
 			{/* form */}
 			<form
 				action="#"
@@ -41,24 +39,24 @@ export default function AddItem({ refreshData }) {
 					e.preventDefault();
 					handleItemAdd();
 				}}
-				className="flex justify-between mx-7"
+				className="flex justify-between"
 			>
 				{/* input */}
 				<input
 					type="text"
 					value={name}
-					placeholder="Enter item name"
+					placeholder="Add new task"
 					onChange={(e) => setName(e.target.value)}
-					className="flex-1 px-4 mr-2 py-1 bg-[#766B57] bg-opacity-60 text-white focus:outline-none rounded placeholder:text-gray-300"
+					className="h-12 flex-1 px-4 mr-2 py-1  focus:outline-none placeholder:text-gray-300"
 				/>
 
 				{/* btn */}
 				<button
 					type="submit"
-					className="bg-[#766B57]  bg-opacity-60 px-2 text-white rounded hover:opacity-70 text-sm disabled:opacity-70"
+					className="bg-[#A59C82] p-1 m-2 text-white rounded-md hover:opacity-70 text-sm disabled:opacity-70 aspect-square"
 					disabled={name === "" || name?.trim() === ""}
 				>
-					Submit
+					<Icon.PlusIcon />
 				</button>
 			</form>
 		</div>

@@ -5,7 +5,7 @@ import Empty from "./Empty";
 
 export default function TodoList({ filteredList, refreshData, isLoading }) {
 	return (
-		<div className="List w-[370px] flex flex-col mx-auto mt-4">
+		<div className="List w-[400px] flex flex-col mx-auto mt-4">
 			{isLoading === true ? (
 				<Loader />
 			) : filteredList.length <= 0 ? (

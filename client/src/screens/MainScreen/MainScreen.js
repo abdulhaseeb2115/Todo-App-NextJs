@@ -108,12 +108,12 @@ export default function MainScreen() {
 	}, []);
 
 	return (
-		<div className="MainScreen h-screen w-full overflow-y-scroll relative p-2">
+		<div className="MainScreen h-screen w-full overflow-y-scroll relative p-2 pt-16">
 			<Components.Image />
 
 			<Components.AddItem refreshData={refreshData} />
 
-			<div className="Button relative w-[370px] h-[70px] bg-[#A59C82] bg-opacity-90 mt-5 rounded-lg border border-[#A59C82] flex mx-auto ">
+			<div className="Button relative w-[400px] h-[55px] bg-[#A49377] bg-opacity-90 mt-8 rounded-lg border border-slate-300 flex mx-auto">
 				<Components.Menu
 					setToggleDropdown={setToggleDropdown}
 					setToggleMenu={setToggleMenu}

@@ -3,11 +3,8 @@ import person from "../assets/person.jpg";
 
 export default function Image() {
 	return (
-		<img
-			src={person}
-			alt="person_image"
-			className="User h-28 aspect-square rounded-full border-[3px] border-[#AB9A90] shadow-xl mx-auto"
-			loading="lazy"
-		/>
+		<div className="User h-32 aspect-square rounded-full border-[4px] border-[#cabfb9] shadow-xl mx-auto overflow-hidden">
+			<img src={person} alt="person_image" className="w-full" loading="lazy" />
+		</div>
 	);
 }

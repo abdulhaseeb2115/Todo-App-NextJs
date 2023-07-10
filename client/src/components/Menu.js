@@ -1,6 +1,6 @@
 import React from "react";
-import { HiOutlineMenu } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import * as Icon from "../assets/icons/all";
 
 export default function Menu({ setToggleDropdown, setToggleMenu, toggleMenu }) {
 	const navigate = useNavigate();
@@ -13,11 +13,11 @@ export default function Menu({ setToggleDropdown, setToggleMenu, toggleMenu }) {
 					setToggleMenu(!toggleMenu);
 				}}
 			>
-				<HiOutlineMenu size={25} color="#766B57" />
+				<Icon.ListIcon />
 			</button>
 
 			<div
-				className={`Menu z-50 absolute top-full left-0 w-[371px] h-0 overflow-hidden duration-300 
+				className={`Menu z-50 absolute top-full left-0 w-[401px] h-0 overflow-hidden duration-300 
 					delay-100 ease-in-out mt-2 mx-auto -ml-0.5
 					${toggleMenu === false ? "!h-0" : "!h-[200px]"}
 					`}

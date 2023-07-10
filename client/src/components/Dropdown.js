@@ -1,4 +1,5 @@
 import React from "react";
+import * as Icon from "../assets/icons/all";
 import { HiOutlineChevronDown, HiOutlineChevronUp } from "react-icons/hi";
 
 export default function Dropdown({
@@ -30,7 +31,7 @@ export default function Dropdown({
 				{/* selected option */}
 				<p className="text-white drop-shadow-md">
 					{listType === 0
-						? "To do today"
+						? "Your todos"
 						: listType === 1
 						? "Yesterday to do list"
 						: "Past to do list"}
@@ -38,17 +39,18 @@ export default function Dropdown({
 
 				{/* up/down arrow */}
 				<div className={`ml-auto -mb-1 p-2 pr-0`}>
-					{toggleDropdown === false ? (
-						<HiOutlineChevronDown size={18} color="#766B57" />
-					) : (
-						<HiOutlineChevronUp size={18} color="#766B57" />
-					)}
+					<Icon.ChevronIcon
+						height={18}
+						className={`${
+							toggleDropdown === true && "rotate-180"
+						} duration-200 ease-in-out`}
+					/>
 				</div>
 			</button>
 
 			{/* dropdown options */}
 			<div
-				className={`Options z-50 absolute top-full left-0 w-[371px] h-0 overflow-auto duration-300 delay-100 ease-in-out mt-2 mx-auto -ml-0.5 
+				className={`Options z-50 absolute top-full left-0 w-[401px] h-0 overflow-auto duration-300 delay-100 ease-in-out mt-2 mx-auto -ml-0.5 
 					${toggleDropdown === false ? "!h-0" : "!h-[200px]"}`}
 			>
 				{/* today */}

@@ -7,9 +7,9 @@ export default function Loader() {
 			{[1, 2, 3, 4].map((x) => (
 				<div
 					key={x}
-					className={`CardSkeleton relative h-[70px] w-full flex items-center bg-[#766B57] bg-opacity-60 pl-6 pr-3 animate-pulse border-y border-slate-300
-                    ${x === 1 && "rounded-t border-t-0"}
-                    ${x === 4 && "rounded-b border-b-0"}
+					className={`CardSkeleton relative h-[55px] w-full flex items-center bg-[#766B57] bg-opacity-60 pl-6 pr-3 animate-pulse border-y border-slate-300
+                    ${x === 1 && "rounded-t border-t-0 !h-[60px]"}
+                    ${x === 4 && "rounded-b border-b-0 !h-[60px]"}
 			    `}
 				>
 					<button

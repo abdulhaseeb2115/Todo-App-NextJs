@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { RxDragHandleDots2 } from "react-icons/rx";
-import { HiOutlineCheck } from "react-icons/hi";
+import * as Icon from "../assets/icons/all";
 import * as api from "../api/todoRequests";
 
 export default function Card({
@@ -13,9 +12,10 @@ export default function Card({
 	last,
 	refresh,
 }) {
-	const [completed, setCompleted] = useState(completedDate); // checkbox status
+	const [completed, setCompleted] = useState(completedDate); // completed status
 	const [isChecked, setIsChecked] = useState(false); // checkbox status
-	const [toggleSubMenu, setToggleSubMenu] = useState(false); // checkbox status
+	const [toggleSubMenu, setToggleSubMenu] = useState(false); // toggle menu
+	const [finalDate, setFinalDate] = useState(""); // final date
 
 	//
 	//
@@ -52,7 +52,7 @@ export default function Card({
 
 	// update checked
 	useEffect(() => {
-		function updateChecked(params) {
+		function updateChecked() {
 			setIsChecked(status);
 		}
 
@@ -61,20 +61,23 @@ export default function Card({
 
 	return (
 		<div
-			className={`Card relative h-[70px] w-full flex items-center bg-[#EDECE7] bg-opacity-95 pl-6 pr-3 border-y border-[#CBCAC6] 
-			${first === true && "rounded-t-lg !border-t-0"} 
-			${last === true && "rounded-b-lg !border-b-0"}
+			className={`Card relative h-[50px] w-full flex items-center bg-[#EDECE7] bg-opacity-95 pl-6 pr-3 border-y border-[#CBCAC6] 
+			${first === true && "rounded-t-lg !border-t-0 !h-[60px]"} 
+			${last === true && "rounded-b-lg !border-b-0 !h-[60px]"}
 			`}
 		>
 			{/* custom checkbox */}
 			<button
-				className={`Checkbox h-[26px] aspect-square border-2 border-[#766B57] rounded-full flex items-center justify-center 
-				hover:opacity-80 duration-150 ease-in-out
-				${isChecked === true && "bg-[#A59C82] shadow-inner shadow-[#555]"}
-				`}
+				className={`Checkbox`}
 				onClick={() => handleUpdate(id, !isChecked)}
 			>
-				{isChecked === true && <HiOutlineCheck color="white" />}
+				<Icon.CheckCircleIcon
+					stroke={"#867963"}
+					strokeOpacity={0.8}
+					strokeWidth={1.5}
+					fill={isChecked === true ? "#A49377" : "transparent"}
+					fillOpacity={0.6}
+				/>
 			</button>
 
 			{/* text */}
@@ -85,40 +88,57 @@ export default function Card({
 				className="ml-auto -mb-1 px-3 hover:opacity-80 duration-150 ease-in-out"
 				onClick={() => setToggleSubMenu(!toggleSubMenu)}
 			>
-				<RxDragHandleDots2 size={20} color="#766B57" />
+				<Icon.DotIcon />
 			</button>
 
 			{/* menu */}
 			<div
-				className={`absolute z-30 w-0 h-0 overflow-hidden top-full right-6 -mt-4 flex flex-col justify-between bg-[#EDECE7] opacity-95 
-				rounded shadow shadow-[#555] duration-300 delay-100 ease-in-out
-				${toggleSubMenu === false ? "!h-0 !w-0" : "!h-[180px] !w-[85%] !p-5"}
+				className={`absolute z-30 w-0 h-0 overflow-hidden 
+				top-full left-0 mt-0.5 
+				flex flex-col 
+				bg-[#f3f2ef] shadow
+				duration-300 delay-100 ease-in-out
+				${toggleSubMenu === false ? "!h-0 !w-0" : "!h-[120px] !w-[100%] !p-5"}
 				`}
 			>
-				{/* created on */}
+				{/* completed on */}
 				<div>
-					<p className="text-xs font-semibold">Date Created</p>
-					<p className="text-sm pb-2 border-b border-gray-300">
-						{new Date(createdAt).toUTCString()}
-					</p>
+					{/* completed */}
+					<span className="text-sm font-bold">Completed: </span>
+					<span className="text-sm">
+						{isChecked === true
+							? new Date(completed).toLocaleTimeString([], {
+									day: "2-digit",
+									month: "2-digit",
+									year: "numeric",
+									hour: "numeric",
+									minute: "numeric",
+									hour12: true,
+							  })
+							: "Not completed"}
+					</span>
 				</div>
 
-				{/* completed on */}
-				{isChecked === true && (
-					<div>
-						{/* completed */}
-						<p className="text-xs font-semibold">Date Completed</p>
-						<p className="text-sm pb-2 border-b border-gray-300">
-							{new Date(completed).toUTCString()}
-						</p>
-					</div>
-				)}
+				{/* created on */}
+				<div>
+					<span className="text-sm font-bold">Created At: </span>
+					<span className="text-sm">
+						{new Date(createdAt).toLocaleTimeString([], {
+							day: "2-digit",
+							month: "2-digit",
+							year: "numeric",
+							hour: "numeric",
+							minute: "numeric",
+							hour12: true,
+						})}
+					</span>
+				</div>
 
 				{/* delete */}
 				<button
-					className="bg-red-400 text-white p-1 rounded-md 
-						duration-300 ease-in-out
-						hover:opacity-60"
+					className="bg-red-200 text-red-400 p-1 mt-2 rounded-md 
+					duration-300 ease-in-out
+					hover:opacity-60"
 					onClick={() => handleDelete()}
 				>
 					Delete
