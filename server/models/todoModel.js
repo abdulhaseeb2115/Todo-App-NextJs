@@ -2,9 +2,14 @@ import mongoose from "mongoose";
 
 const todoSchema = new mongoose.Schema(
 	{
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			required: [true, "Please enter user id"],
+		},
 		todo: {
 			type: String,
 			required: [true, "Please enter todo item name"],
+			maxLength: [20, "Todo item name cannot exceed 20 characters"],
 		},
 		completed: {
 			type: Boolean,
