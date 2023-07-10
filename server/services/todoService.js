@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Todo from "../models/todoModel.js";
 
 // GET ITEM BY ID
@@ -6,8 +7,13 @@ const getItemById = async (itemId) => {
 };
 
 // ALL ITEMS
-const getAllItems = async () => {
+const getAllItems = async (userId) => {
 	return await Todo.aggregate([
+		{
+			$match: {
+				user: mongoose.Types.ObjectId(userId),
+			},
+		},
 		{
 			$sort: {
 				createdAt: -1,
@@ -17,8 +23,9 @@ const getAllItems = async () => {
 };
 
 // ADD ITEM
-const addItem = async (todo) => {
+const addItem = async (todo, userId) => {
 	return await Todo.create({
+		user: userId,
 		todo: todo,
 	});
 };

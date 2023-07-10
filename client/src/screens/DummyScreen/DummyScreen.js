@@ -10,7 +10,7 @@ export default function DummyScreen() {
 		<div className="DummyScreen h-screen w-full overflow-y-scroll relative p-2">
 			<button
 				className="text-white bg-[#A59C82] w-fit px-6 py-1 rounded shadow-md m-4"
-				onClick={() => navigate("/todo")}
+				onClick={() => navigate("/")}
 			>
 				back to home
 			</button>

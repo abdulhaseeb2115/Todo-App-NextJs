@@ -3,8 +3,11 @@ import "./MainScreen.css";
 import * as api from "../../api/todoRequests";
 import * as Components from "../../components/all";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
 
 export default function MainScreen() {
+	const { loading, user } = useSelector(selectUser);
 	const [isLoading, setIsLoading] = useState(true); // loading
 
 	const [listType, setListType] = useState(0); // change list type
@@ -96,6 +99,7 @@ export default function MainScreen() {
 				}, 1000);
 			} catch (error) {
 				console.log(error);
+				console.log(error?.response?.data?.message ?? "Message not found !");
 				toast.error("Server Error");
 
 				setTimeout(() => {
@@ -108,7 +112,8 @@ export default function MainScreen() {
 	}, []);
 
 	return (
-		<div className="MainScreen h-screen w-full overflow-y-scroll relative p-2 pt-16">
+		<div className="MainScreen h-screen w-full overflow-y-scroll relative p-2">
+			{!loading && user && <p>Logged in as {user?.user?.name}</p>}
 			<Components.Image />
 
 			<Components.AddItem refreshData={refreshData} />

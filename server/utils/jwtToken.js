@@ -1,5 +1,3 @@
-import ParkingSpace from "../models/parkingSpaceModel.js";
-
 // Creating Token & saving inside Cookie
 const sendToken = async (user, statusCode, res) => {
 	const token = user.getJWTToken();
@@ -13,7 +11,7 @@ const sendToken = async (user, statusCode, res) => {
 		httpOnly: true,
 		// secure: "isSecure",
 	};
-
+	console.log("-> Token sent to - " + user.name);
 	res.status(statusCode).cookie("token", token, options).json({
 		success: true,
 		user,

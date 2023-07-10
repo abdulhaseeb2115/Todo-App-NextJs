@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import errorMiddleware from "./middleware/error.js";
 import todoRoutes from "./routes/todoRoute.js";
+import userRoutes from "./routes/userRoute.js";
 
 const app = express(); // create app
 
@@ -20,6 +21,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/v1/todo", todoRoutes); // todo routes
+app.use("/api/v1/user", userRoutes); // user routes
 
 app.use(errorMiddleware); // error middleware
 

@@ -26,6 +26,7 @@ export default function AddItem({ refreshData }) {
 			}
 		} catch (error) {
 			console.log(error);
+			console.log(error?.response?.data?.message ?? "Message not found !");
 			toast.error("An error occured !");
 		}
 	}

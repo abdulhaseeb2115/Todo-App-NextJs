@@ -5,11 +5,13 @@ import {
 	getAllItems,
 	updateItemStatus,
 } from "../controllers/todoController.js";
+import isAuthenticatedUser from "../middleware/auth.js";
+
 const router = express.Router();
 
-router.get("/all", getAllItems); // get all item
-router.post("/add", addItem); // add item
-router.delete("/delete/:itemId", deleteItem); // delete item
-router.put("/update/:itemId", updateItemStatus); // mark item as completed
+router.get("/all", isAuthenticatedUser, getAllItems); // get all item
+router.post("/add", isAuthenticatedUser, addItem); // add item
+router.delete("/delete/:itemId", isAuthenticatedUser, deleteItem); // delete item
+router.put("/update/:itemId", isAuthenticatedUser, updateItemStatus); // mark item as completed
 
 export default router;

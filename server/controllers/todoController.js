@@ -4,7 +4,12 @@ import catchAsyncErrors from "../middleware/catchAsyncErrors.js";
 
 // GET ALL ITEMS
 export const getAllItems = catchAsyncErrors(async (req, res, next) => {
-	const allItems = await TodoService.getAllItems();
+	// invalid id
+	if (!req.user.id) {
+		return next(new ErrorHandler(400, "User id is invalid!"));
+	}
+
+	const allItems = await TodoService.getAllItems(req.user.id);
 
 	res.status(200).json({
 		success: true,
@@ -19,7 +24,7 @@ export const addItem = catchAsyncErrors(async (req, res, next) => {
 		return next(new ErrorHandler(400, "Todo name is invalid!"));
 	}
 
-	const newItem = await TodoService.addItem(req.body.todo);
+	const newItem = await TodoService.addItem(req.body.todo, req.user.id);
 
 	res.status(200).json({
 		success: true,

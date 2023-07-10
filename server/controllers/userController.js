@@ -9,19 +9,19 @@ export const loginUser = catchAsyncErrors(async (req, res, next) => {
 	// console.log(name, password);
 	if (!name || !password) {
 		// if name or password not given
-		return next(new ErrorHandler(400, "Please enter Name & Password"));
+		return next(new ErrorHandler(400, "Please enter Name & Password !"));
 	}
 
 	const user = await UserService.getUserByName(name);
 	if (!user) {
 		// if name not foud
-		return next(new ErrorHandler(401, "Invalid Name"));
+		return next(new ErrorHandler(401, "User not found !"));
 	}
 
 	const isPasswordMatched = await user.comparePassword(password);
 	if (!isPasswordMatched) {
 		//if password is not matched
-		return next(new ErrorHandler(401, "Invalid Password"));
+		return next(new ErrorHandler(401, "Invalid Password !"));
 	}
 
 	sendToken(user, 200, res); //function for token
