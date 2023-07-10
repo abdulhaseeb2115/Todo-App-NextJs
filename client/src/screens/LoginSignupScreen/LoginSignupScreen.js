@@ -40,16 +40,16 @@ export default function LoginSignupScreen() {
 			});
 			if (data.success === true) {
 				console.log("-> user signed up");
-				toast.success("Welcome To Todo App");
-				toast.success(`Registered as ${data?.user.name}`);
 				setShowLoader(false);
 
 				localStorage.setItem("jwtToken", data.token);
-				setTimeout(() => {
-					axios.defaults.headers.common["Authorization"] = data.token;
-					dispatch(logIn({ user: data.user }));
-					navigate("/");
-				}, 1000);
+				axios.defaults.headers.common["Authorization"] = data.token;
+
+				dispatch(logIn({ user: data.user }));
+				navigate("/");
+
+				toast.success("Welcome To Todo App");
+				toast.success(`Registered as ${data?.user.name}`);
 			}
 		} catch (error) {
 			setShowLoader(false);
@@ -73,17 +73,17 @@ export default function LoginSignupScreen() {
 				password: loginPass,
 			});
 			if (data.success === true) {
-				toast.success(`Welcome Back !`);
-				toast.success(`Logged In as ${data?.user.name}`);
 				console.log("-> user logged in");
 				setShowLoader(false);
 
 				localStorage.setItem("jwtToken", data.token);
-				setTimeout(() => {
-					axios.defaults.headers.common["Authorization"] = data.token;
-					dispatch(logIn({ user: data.user }));
-					navigate("/");
-				}, 1000);
+				axios.defaults.headers.common["Authorization"] = data.token;
+
+				dispatch(logIn({ user: data.user }));
+				navigate("/");
+
+				toast.success(`Welcome Back !`);
+				toast.success(`Logged In as ${data?.user.name}`);
 			}
 		} catch (error) {
 			setShowLoader(false);
