@@ -1,12 +1,15 @@
+"use client";
+
 import { useEffect } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import * as Screens from "./screens/all";
 import { Toaster } from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import { logIn, logOut, selectUser } from "./features/userSlice";
-import * as api from "./api/userRequests";
 import axios from "axios";
+
+import { useDispatch, useSelector } from "react-redux";
+import { logIn, logOut, selectUser } from "../store/userSlice";
+import * as api from "../requests/userRequests";
+
+import LoginPage from "./login/page";
+import MainPage from "./main/page";
 
 function App() {
 	const dispatch = useDispatch();
@@ -28,6 +31,7 @@ function App() {
 
 				// check token validity from server
 				const { data } = await api.LoadUser();
+				// console.log(data);
 				if (data) {
 					// axios.defaults.headers.common["Authorization"] = data.token;
 					dispatch(
@@ -52,43 +56,20 @@ function App() {
 	}, [loading, dispatch]);
 
 	return (
-		<BrowserRouter>
+		<>
 			<Toaster />
-			<Routes>
-				{/* protected route */}
-				<Route
-					path="/"
-					element={
-						loading ? (
-							<div className="h-screen flex items-center justify-center bg-black">
-								<div className="text-2xl tracking-wider text-slate-300 font-black animate-pulse">
-									TODO APP LOADING ...
-								</div>
-							</div>
-						) : !user ? (
-							<Screens.LoginSignupScreen />
-						) : (
-							<Screens.MainScreen />
-						)
-					}
-				/>
-
-				<Route path="/about" element={<Screens.AboutScreen />} />
-
-				<Route path="/dummy" element={<Screens.DummyScreen />} />
-
-				<Route
-					path="*"
-					element={
-						<div className="h-screen w-full flex bg-[#A49377] justify-center items-center text-center text-2xl font-semibold">
-							<h1>
-								404 <br /> Page not found
-							</h1>
-						</div>
-					}
-				/>
-			</Routes>
-		</BrowserRouter>
+			{loading ? (
+				<div className="h-screen flex items-center justify-center bg-black">
+					<div className="text-2xl tracking-wider text-slate-300 font-black animate-pulse">
+						TODO APP LOADING ...
+					</div>
+				</div>
+			) : user ? (
+				<MainPage />
+			) : (
+				<LoginPage />
+			)}
+		</>
 	);
 }
 
