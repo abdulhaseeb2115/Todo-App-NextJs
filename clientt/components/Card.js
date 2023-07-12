@@ -86,12 +86,13 @@ export default function Card({
 			<p className="ml-5 font-semibold text-gray-700">{name}</p>
 
 			{/* menu btn */}
-			<button
-				className="ml-auto -mb-1 px-3 hover:opacity-80 duration-150 ease-in-out"
-				onClick={() => setToggleSubMenu(!toggleSubMenu)}
-			>
+			<div className="ml-auto relative h-6 w-6 mr-4 hover:opacity-80 duration-150 ease-in-out">
+				<button
+					className="absolute top-0 left-0 h-full w-full"
+					onClick={() => setToggleSubMenu(!toggleSubMenu)}
+				/>
 				<Icon.DotIcon />
-			</button>
+			</div>
 
 			{/* menu */}
 			<div
