@@ -1,6 +1,6 @@
 # Full Stack Todo App
 
-This is a full stack todo app that allows users to manage their tasks. It consists of a homepage, an about page, and a dummy page. The app also includes a login page and utilizes authentication using JSON Web Tokens (JWT). The homepage, which is the todo route, is private, while the about and dummy pages are public.
+This is a full stack todo app that allows users to manage their tasks. It consists of a Main Page, an About, and a Dummy page. The app also includes a Login page and utilizes authentication using JSON Web Tokens (JWT). The Main page, which is the todo route, is private, while the About and Dummy pages are public.
 
 ## Deployed App Links
 
