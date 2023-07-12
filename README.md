@@ -1,5 +1,8 @@
 # Full Stack Todo App
 
+![main](https://github.com/abdulhaseeb2115/test_ccript/assets/85861436/6152455d-7f31-4458-bcfe-6b951e03f646)
+
+
 This is a full stack todo app that allows users to manage their tasks. It consists of a Main Page, an About, and a Dummy page. The app also includes a Login page and utilizes authentication using JSON Web Tokens (JWT). The Main page, which is the todo route, is private, while the About and Dummy pages are public.
 
 ## Deployed App Links
@@ -80,6 +83,6 @@ client/
 
 1. Basic Jest and Cypress tests have been included. To run the tests, follow these instructions:
    - For server tests, navigate to the `server` folder and execute the command: `npm test`.
-   - For React client tests, navigate to the `client_react` folder and execute the command: `npm test`.
-   - For Next.js client tests, navigate to the `client_next` folder and execute the command: `npm test`.
+   - For React client tests, navigate to the `client_react` folder and execute the command: `npx cypress open` and select test file.
+   - For Next.js client tests, navigate to the `client` folder and execute the command: `npx cypress open` and select test file.
 2. Please refer to the respective test folders for more information on the test suites and coverage.
