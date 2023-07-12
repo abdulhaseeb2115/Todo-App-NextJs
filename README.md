@@ -17,6 +17,65 @@ Follow these steps to run the different components of the application:
 2. Run the React client by navigating to the `client_react` folder and executing the command: `npm start`.
 3. Run the Next.js client by navigating to the `client` folder and executing the command: `npm run dev`.
 
+## Folder Structure
+
+### React App
+
+```
+client_react/
+├── build
+├── cypress
+├── public
+├── nodeModules
+├── src/
+│   ├── api
+│   ├── app
+│   ├── assets
+│   ├── components
+│   ├── features
+│   ├── screens
+│   ├── App.css
+│   ├── App.js
+│   ├── index.css
+│   └── index.js
+├── .env.development
+├── .gitignore
+├── cypress.config.js
+├── package.json
+├── README.md
+└── tailwind.config.js
+```
+
+### Next.js App
+
+```
+client/
+├── .next
+├── store
+├── app/
+│   ├── about
+│   ├── dummy
+│   ├── login
+│   ├── main
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.js
+│   └── page.js
+├── assets
+├── cypress
+├── components
+├── nodeModules
+├── public
+├── requests
+├── .env.local
+├── .gitignore
+├── post.css.config.js
+├── cypress.config.js
+├── package.json
+├── README.md
+└── tailwind.config.js
+```
+
 ## Additional Notes
 
 1. Basic Jest and Cypress tests have been included. To run the tests, follow these instructions:
