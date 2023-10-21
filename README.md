@@ -10,7 +10,7 @@ This is a full stack todo app that allows users to manage their tasks. It consis
 - Next App: [https://test-ccript.vercel.app/](https://test-ccript.vercel.app/)
 - React App: [https://abh-todo-updated.netlify.app/](https://abh-todo-updated.netlify.app/)
 - API Link: [https://abh-todo-updated-e2365dde0f1b.herokuapp.com/](https://abh-todo-updated-e2365dde0f1b.herokuapp.com/)
-- GitHub Repository: [https://github.com/abdulhaseeb2115/test_ccript](https://github.com/abdulhaseeb2115/test_ccript)
+- GitHub Repository: [https://github.com/abdulhaseeb2115/Todo-App-NextJs](https://github.com/abdulhaseeb2115/Todo-App-NextJs)
 
 ## Instructions
 
